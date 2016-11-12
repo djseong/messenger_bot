@@ -1,7 +1,7 @@
 {
-    "appSecret": "",
-    "pageAccessToken": "",
-    "validationToken": "",
-    "serverURL": "", 
+    "appSecret": "7c7cec65c36a921b980e4609b4418d86",
+    "pageAccessToken": "EAAJdsunsetwBAIXtQe24dhsNf4TtMyNE3gWNvNe29inlufGpYksvgsnpysdC2Tffi2RznBCBmIExo9OYi6eIR1HfkUnv3Jm10MVSX4yF2MtcLyHaH9ZBzxzCa6FxUvOLQlwOKIKHVM8l7WGeKxWZAzKiM1RE4NQyopgR2ZB4AZDZD",
+    "validationToken": "messengerBot",
+    "serverURL": "https://messageb.herokuapp.com/", 
     "buildpacks": "heroku/nodejs"
 }
