@@ -2,3 +2,7 @@
   <script src = "js/index.js"></script>
   Welcome to FB hack
 </head>
+
+<body> 
+  <button onclick="myFacebookLogin()">Login with Facebook</button>
+</body>
