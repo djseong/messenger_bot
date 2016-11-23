@@ -6,27 +6,18 @@ window.fbAsyncInit = function() {
       version    : 'v2.8'
     });
     FB.AppEvents.logPageView();
-    
-   FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    // the user is logged in and has authenticated your
-    // app, and response.authResponse supplies
-    // the user's ID, a valid access token, a signed
-    // request, and the time the access token 
-    // and signed request each expire
-    console.log(response.authResponse)
-    var uid = response.authResponse.userID;
-    var accessToken = response.authResponse.accessToken;
-  } else if (response.status === 'not_authorized') {
-    // the user is logged in to Facebook, 
-    // but has not authenticated your app
-    console.log("not authenticated")
-  } else {
-    // the user isn't logged in to Facebook.
-    console.log("not logged in")
-  }
- });
-  };
+
+    function myFacebookLogin() {
+      FB.login(function(){
+        FB.api('/me/feed', 'post', {
+          message: 'oops',
+          privacy: {
+            value: "SELF"
+          }
+        });
+      }, {scope: 'publish_actions'});
+    }
+};
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
