@@ -18,7 +18,9 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "config": "^1.20.4",
-    "ejs": "^2.4.2",
+    "consolidate": "latest",
+    "dustjs-helpers": "latest",
+    "dustjs-linkedin": "latest",
     "express": "^4.13.4",
     "request": "^2.72.0"
   },

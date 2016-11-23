@@ -13,14 +13,20 @@
 const 
   bodyParser = require('body-parser'),
   config = require('config'),
+  cons = require('consolidate'),
   crypto = require('crypto'),
+  dust = require('dustjs-linkedin'),
   express = require('express'),
   https = require('https'),  
   request = require('request');
 
 var app = express();
+
+dust.debugLevel = "ERROR";
+app.engine('dust', cons.dust)
+
 app.set('port', process.env.PORT || 5000);
-app.set('view engine', 'ejs');
+app.set('view engine', 'dust');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
@@ -55,6 +61,10 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);
 }
+
+app.get('/fb', function(req, res) {
+  res.render('index')
+})
 
 /*
  * Use your own validation token. Check that the token used in the Webhook 
@@ -218,7 +228,6 @@ function receivedAuthentication(event) {
 function receivedMessage(event) {
   //var senderID = event.sender.id;
   var senderID = "1166673433412881"
-  console.log("user id: ", event.sender.id)
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
