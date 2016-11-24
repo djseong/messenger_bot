@@ -6,18 +6,17 @@ window.fbAsyncInit = function() {
       version    : 'v2.8'
     });
     FB.AppEvents.logPageView();
-
-    function myFacebookLogin() {
-      FB.login(function(){
-        FB.api('/me/feed', 'post', {
-          message: 'oops',
-          privacy: {
-            value: "SELF"
-          }
-        });
-      }, {scope: 'publish_actions'});
-    }
 };
+  function myFacebookLogin() {
+    FB.login(function(){
+      FB.api('/me/feed', 'post', {
+        message: 'oops',
+        privacy: {
+          value: "SELF"
+        }
+      });
+    }, {scope: 'publish_actions'});
+  }
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -26,4 +25,3 @@ window.fbAsyncInit = function() {
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
