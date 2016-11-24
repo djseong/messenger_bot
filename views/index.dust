@@ -5,4 +5,5 @@
 
 <body> 
     <button onclick="myFacebookLogin()">Login with Facebook</button>
+    <button onclick="getFriends()"> Get Facebook Friends </button>
 </body>

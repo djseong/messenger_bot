@@ -18,6 +18,33 @@ window.fbAsyncInit = function() {
     }, {scope: 'publish_actions'});
   }
 
+  function checkLogin() {
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+  }
+
+  function getFriends() {
+    if (checkLogin() == true) {
+      FB.api('/me/friends', function(response) {
+          if (response && ! response.error) {
+            console.log(response); 
+          }
+          else {
+            console.log(response.error)
+          }
+      })
+    }
+    else {
+      alert("Not logged in");
+    }
+  }
+
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
