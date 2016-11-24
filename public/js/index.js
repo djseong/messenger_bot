@@ -10,39 +10,35 @@ window.fbAsyncInit = function() {
   function myFacebookLogin() {
     FB.login(function(){
       FB.api('/me/feed', 'post', {
-        message: 'oops',
-        privacy: {
-          value: "SELF"
-        }
-      });
+      //   message: 'oops',
+      //   privacy: {
+      //     value: "SELF"
+      //   }
+       });
     }, {scope: 'publish_actions'});
   }
 
   function checkLogin() {
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        return true;
+        console.log("Logged in")
       }
       else {
-        return false;
+        myFacebookLogin();
       }
     });
   }
 
   function getFriends() {
-    if (checkLogin() == true) {
-      FB.api('/me/friends', function(response) {
-          if (response && ! response.error) {
-            console.log(response); 
-          }
-          else {
-            console.log(response.error)
-          }
-      })
-    }
-    else {
-      alert("Not logged in");
-    }
+    checkLogin()
+    FB.api('/me/friends', function(response) {
+        if (response && ! response.error) {
+          console.log(response); 
+        }
+        else {
+          console.log(response.error)
+        }
+    })
   }
 
   (function(d, s, id){
